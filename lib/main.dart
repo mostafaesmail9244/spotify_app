@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:logger/logger.dart';
 import 'package:spotify_app/core/constants/constants.dart';
+import 'package:spotify_app/core/di/debendencies_injection.dart';
 import 'package:spotify_app/core/helper/cache_helper.dart';
 import 'package:spotify_app/core/themes/app_colors.dart';
 import 'package:spotify_app/core/themes/app_theme.dart';
@@ -13,6 +14,7 @@ import 'package:spotify_app/presentation/splash/controllers/cubit/theme_mode_cub
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await init();
   await CacheHelper.init();
   Logger()
       .d('theme mode: ${await CacheHelper.getData(key: Constants.themeMode)}');

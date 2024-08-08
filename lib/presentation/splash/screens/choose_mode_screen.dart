@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:spotify_app/core/helper/extention.dart';
+import 'package:spotify_app/core/helper/extentions.dart';
 import 'package:spotify_app/core/helper/spacing.dart';
+import 'package:spotify_app/core/router/routes.dart';
 import 'package:spotify_app/core/themes/app_colors.dart';
 import 'package:spotify_app/presentation/splash/widgets/background_screen.dart';
 import 'package:spotify_app/presentation/splash/widgets/choose_mode_buttons.dart';
@@ -31,6 +32,7 @@ class ChooseModeScreen extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 // TODO: Navigate to next screen
+                context.pushNamed(Routes.authScreen);
               },
               child: const Text(
                 'Continue',

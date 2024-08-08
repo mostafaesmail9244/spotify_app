@@ -15,7 +15,7 @@ class ModeButtons extends StatelessWidget {
     return BlocBuilder<ThemeModeCubit, ThemeModeState>(
       builder: (context, state) {
         bool isDarkMode = context.read<ThemeModeCubit>().isDark;
-        bool fromShared = CacheHelper.getData(key: Constants.themeMode);
+        bool fromShared = CacheHelper.getData(key: Constants.themeMode)??false;
 
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -2,5 +2,7 @@ class Routes {
   static const splash = '/';
   static const getStartScreen = '/getStartScreen';
   static const chooseModeScreen = '/chooseModeScreen';
-  static const login = '/login';
+  static const authScreen = '/authScreen';
+  static const loginScreen = '/loginScreen';
+  static const registerScreen = '/registerScreen';
 }

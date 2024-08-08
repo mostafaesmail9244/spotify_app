@@ -19,3 +19,7 @@ extension HandleScreenSize on BuildContext {
   double get deviceWidth => MediaQuery.of(this).size.width;
   double get deviceHeight => MediaQuery.of(this).size.height;
 }
+
+extension DarkMode on BuildContext {
+  bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
+}
