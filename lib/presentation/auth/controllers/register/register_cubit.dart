@@ -3,34 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:spotify_app/core/di/debendencies_injection.dart';
 import 'package:spotify_app/core/helper/check_internet.dart';
-import 'package:spotify_app/data/models/auth/sign_in_req.dart';
-import 'package:spotify_app/domain/usecases/sign_in.dart';
+import 'package:spotify_app/data/models/auth/sign_up_req.dart';
+import 'package:spotify_app/domain/usecases/sign_up.dart';
 
-part 'login_state.dart';
+part 'register_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitial());
+class RegisterCubit extends Cubit<RegisterState> {
+  RegisterCubit() : super(RegisterInitial());
+
   bool isObscure = true;
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
+  final fullNameController = TextEditingController();
   final passwordController = TextEditingController();
-
-  void signIn() async {
-    emit(LoginLoadingState());
-
+  void signUp() async {
+    emit(RegisterLoadingState());
     bool isConnected = await checkInternetConnectivity();
     if (isConnected) {
-      final result = await getIt<SignInUseCase>().call(
-          params: SignInUserReq(
+      final result = await getIt<SignUpUseCase>().call(
+          params: SignUpUserReq(
+        fullName: fullNameController.text,
         email: emailController.text,
         password: passwordController.text,
       ));
 
       result.fold(
-        (error) {
-          emit(LoginErrorState(error: error));
+        (l) {
+          emit(RegisterErrorState(error: l));
+          Logger().e(l);
         },
-        (data) => emit(LoginSuccessState()),
+        (data) => emit(RegisterSuccessState()),
       );
     } else {
       emit(NoInternetConnectionState());

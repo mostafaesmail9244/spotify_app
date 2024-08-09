@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_app/core/helper/extentions.dart';
 import 'package:spotify_app/core/helper/spacing.dart';
-import 'package:spotify_app/core/router/routes.dart';
-import 'package:spotify_app/core/themes/app_colors.dart';
 import 'package:spotify_app/core/widgets/custom_text_form_field.dart';
-import 'package:spotify_app/presentation/auth/controllers/cubit/register_cubit.dart';
+import 'package:spotify_app/presentation/auth/controllers/register/register_cubit.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_app/core/helper/app_regex.dart';
-import 'package:spotify_app/presentation/auth/widgets/divider_widget.dart';
-import 'package:spotify_app/presentation/auth/widgets/social_buttons.dart';
 
 class RegisterForms extends StatelessWidget {
   const RegisterForms({super.key});
@@ -22,20 +17,20 @@ class RegisterForms extends StatelessWidget {
           CustomTextFormField(
             hintText: 'Full Name',
             validator: (val) {
-              if (val!.isEmpty || AppRegex.isEmailValid(val)) {
+              if (val!.isEmpty) {
                 return 'Please Enter Valid Name';
               }
               return null;
             },
-            inputType: TextInputType.emailAddress,
-            controller: context.read<RegisterCubit>().emailController,
-            autoFill: const [AutofillHints.email],
+            inputType: TextInputType.text,
+            controller: context.read<RegisterCubit>().fullNameController,
+            autoFill: const [AutofillHints.name],
           ),
           verticalSpace(20),
           CustomTextFormField(
             hintText: 'Enter Email',
             validator: (val) {
-              if (val!.isEmpty || AppRegex.isEmailValid(val)) {
+              if (val!.isEmpty || !AppRegex.isEmailValid(val)) {
                 return 'Please Enter Valid Email';
               }
               return null;
@@ -50,7 +45,7 @@ class RegisterForms extends StatelessWidget {
               return CustomTextFormField(
                 hintText: 'Enter Password',
                 validator: (val) {
-                  if (val!.isEmpty || AppRegex.isPasswordValid(val)) {
+                  if (val!.isEmpty) {
                     return 'Please Enter Valid Password';
                   }
                   return null;
@@ -70,63 +65,6 @@ class RegisterForms extends StatelessWidget {
               );
             },
           ),
-          verticalSpace(20),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                'Forget Password?',
-                style: TextStyle(
-                    color:
-                        context.isDarkMode ? Colors.grey : AppColors.darkGrey),
-              ),
-            ),
-          ),
-          verticalSpace(20),
-          SizedBox(
-            height: 60,
-            width: context.deviceWidth * 0.8,
-            child: ElevatedButton(
-              onPressed: () {
-                if (context
-                    .read<RegisterCubit>()
-                    .formKey
-                    .currentState!
-                    .validate()) {}
-              },
-              child: Text(
-                'Register',
-                style: TextStyle(
-                  color: context.isDarkMode ? Colors.black : Colors.white,
-                ),
-              ),
-            ),
-          ),
-          verticalSpace(20),
-          const DividerWidget(),
-          const SocialButtons(),
-          verticalSpace(20),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: 'Do you have an account? ',
-                  style: TextStyle(
-                      color: context.isDarkMode
-                          ? Colors.grey
-                          : AppColors.darkGrey),
-                ),
-                WidgetSpan(child: horizontalSpace(5)),
-                TextSpan(
-                    onEnter: (val) {
-                      context.pushNamed(Routes.loginScreen);
-                    },
-                    text: 'Login',
-                    style: const TextStyle(color: AppColors.primary)),
-              ],
-            ),
-          )
         ],
       ),
     );

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_app/core/di/debendencies_injection.dart';
 import 'package:spotify_app/core/router/routes.dart';
-import 'package:spotify_app/presentation/auth/controllers/cubit/register_cubit.dart';
+import 'package:spotify_app/presentation/auth/controllers/register/register_cubit.dart';
 import 'package:spotify_app/presentation/auth/controllers/login/login_cubit.dart';
-import 'package:spotify_app/presentation/auth/screens/auth_screen.dart';
-import 'package:spotify_app/presentation/auth/screens/login_screen.dart';
-import 'package:spotify_app/presentation/auth/screens/register_screen.dart';
-import 'package:spotify_app/presentation/splash/screens/choose_mode_screen.dart';
-import 'package:spotify_app/presentation/splash/screens/get_start_screen.dart';
-import 'package:spotify_app/presentation/splash/screens/splash_screen.dart';
+import 'package:spotify_app/presentation/auth/pages/auth_screen.dart';
+import 'package:spotify_app/presentation/auth/pages/login_screen.dart';
+import 'package:spotify_app/presentation/auth/pages/register_screen.dart';
+import 'package:spotify_app/presentation/splash/pages/choose_mode_screen.dart';
+import 'package:spotify_app/presentation/splash/pages/get_start_screen.dart';
+import 'package:spotify_app/presentation/splash/pages/splash_screen.dart';
 
 class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {

@@ -3,7 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spotify_app/core/constants/assets.dart';
 import 'package:spotify_app/core/helper/extentions.dart';
 import 'package:spotify_app/core/helper/spacing.dart';
+import 'package:spotify_app/presentation/auth/widgets/divider_widget.dart';
+import 'package:spotify_app/presentation/auth/widgets/have_account_widget.dart';
+import 'package:spotify_app/presentation/auth/widgets/register_bloc_listener.dart';
+import 'package:spotify_app/presentation/auth/widgets/register_button.dart';
 import 'package:spotify_app/presentation/auth/widgets/register_forms.dart';
+import 'package:spotify_app/presentation/auth/widgets/social_buttons.dart';
 import 'package:spotify_app/presentation/auth/widgets/support_button.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -47,6 +52,14 @@ class RegisterScreen extends StatelessWidget {
                 const SupportButton(),
                 verticalSpace(30),
                 const RegisterForms(),
+                verticalSpace(30),
+                const RegisterButton(),
+                verticalSpace(20),
+                const DividerWidget(),
+                const SocialButtons(),
+                verticalSpace(20),
+                const HaveAccountWidget(),
+                const RegisterBlocListener(),
               ],
             ),
           ),

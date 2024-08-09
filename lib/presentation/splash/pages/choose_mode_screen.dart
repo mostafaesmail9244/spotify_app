@@ -31,7 +31,6 @@ class ChooseModeScreen extends StatelessWidget {
             width: context.deviceWidth * 0.8,
             child: ElevatedButton(
               onPressed: () {
-                // TODO: Navigate to next screen
                 context.pushNamed(Routes.authScreen);
               },
               child: const Text(
