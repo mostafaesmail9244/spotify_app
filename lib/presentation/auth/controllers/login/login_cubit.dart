@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:spotify_app/core/di/debendencies_injection.dart';
 import 'package:spotify_app/core/helper/check_internet.dart';
 import 'package:spotify_app/data/models/auth/sign_in_req.dart';
